@@ -1,13 +1,15 @@
-## Pré-requis et dépendances
+# GPXdot, transformer un gpx en liste de coordonnées
+
+
+### Pré-requis et dépendances
 
 - Python3
 - pip
 - gpxpy
 - geopy
 
----
 
-Installation
+### Installation
 
 1. Cloner le dépôt
 
@@ -28,9 +30,8 @@ python -m venv [NOM ENVIRONNEMENT VIRTUEL]
 source [NOM ENVIRONNEMENT VIRTUEL]/bin/activate
 ```
 
----
 
-Utilisation
+### Utilisation
 
 ```
 python3 gpxdot.py [FICHIER.GPX] [DISTANCE ENTRE LES POINTS EN MÈTRE]
