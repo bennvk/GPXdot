@@ -18,14 +18,20 @@ cd gpxdot
 
 2. Créer un environnement virtuel
 
-```python -m venv [NOM ENVIRONNEMENT VIRTUEL]```
+```
+python -m venv [NOM ENVIRONNEMENT VIRTUEL]
+```
 
 3. Activer l’environnement
 
-```source [NOM ENVIRONNEMENT VIRTUEL]/bin/activate```
+```
+source [NOM ENVIRONNEMENT VIRTUEL]/bin/activate
+```
 
 ---
 
 Utilisation
 
+```
 python3 gpxdot.py [FICHIER.GPX] [DISTANCE ENTRE LES POINTS EN MÈTRE]
+```
