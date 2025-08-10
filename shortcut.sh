@@ -1,4 +1,4 @@
-#bin/bash
+#!bin/bash
 
 echo ""
 read -p "Fichier à convertir : " fichier || echo "Fichier introuvable"
