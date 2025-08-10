@@ -3,7 +3,7 @@
 echo ""
 
 while true; do
-    read -p "Fichier à convertir : " fichier
+    read -p "Fichier à convertir : " fichier_gpx
     if [[ -f "$HOME/gpxdot/$fichier" ]]; then
         break
     else
@@ -30,7 +30,8 @@ gpxdot_fichier() {
     echo ""
     echo " Fichier copié dans le répertoire $HOME/gpxdot/$output"
 }
-else
+
+
     echo ""
     echo "Conversion du fichier en cours ..."
     python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance
