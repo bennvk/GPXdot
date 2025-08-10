@@ -22,7 +22,7 @@ case $choix_fichier in
        ;;
 
 gpxdot_fichier() {
-    read -p "Nom du fichier de sortie : " output
+    read -p "Nom du fichier de sortie (ex : Paris-Brest-Paris.txt) : " output
     echo ""
     echo " Conversion du fichier en cours ... "
     mkdir -p ~/gpxdot/Fichiers_texte
@@ -31,8 +31,8 @@ gpxdot_fichier() {
     echo " Fichier copié dans le répertoire $HOME/gpxdot/$output"
 }
 
-
+gpxdot_sansfichier() {
     echo ""
     echo "Conversion du fichier en cours ..."
     python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance
-fi
+}
