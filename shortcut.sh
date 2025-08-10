@@ -1,8 +1,16 @@
 #!bin/bash
 
 echo ""
-read -p "Fichier à convertir : " fichier || echo "Fichier introuvable"
-read -p "Distance entre les points (en mètres) : " distance || echo "Distance entrée invalide"
+
+while true; do
+    read -p "Fichier à convertir : " fichier
+    if [[ -f "$HOME/gpxdot/$fichier" ]]; then
+        break
+    else
+        echo "Erreur : fichier introuvable dans $HOME/gpxdot/$fichier. Réessayez."
+    fi
+
+    read -p "Distance entre les points (en mètres) : " distance || echo "Distance entrée invalide"
 read -p "Rediriger la sortie dans un fichier ? [O/n]" filed
 
 if [[ $filed == "O" || $filed == "0" || $filed == "o" ]]; then
