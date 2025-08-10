@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo ""
 
@@ -9,9 +9,9 @@ while true; do
     else
         echo "Erreur : fichier introuvable dans $HOME/gpxdot/$fichier_gpx. Réessayez."
     fi
+done
 
 read -p "Distance entre les points (en mètres) : " distance
-
 
 read -p "Voulez-vous rediriger la sortie dans un fichier ? [O/n]" choix_fichier
 case $choix_fichier in
