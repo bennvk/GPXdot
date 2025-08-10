@@ -4,8 +4,8 @@ gpxdot_fichier() {
     read -p "Nom du fichier de sortie (ex : Paris-Brest-Paris.txt) : " output
     echo ""
     echo " Conversion du fichier en cours ... "
-    mkdir -p ~/gpxdot/Fichiers_texte
-    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance > $HOME/gpxdot/Fichiers_texte/$output
+    mkdir -p $HOME/gpxdot/Fichiers_texte
+    python3 $HOME/gpxdot/gpxdot.py $HOME/gpxdot/$fichier_gpx $distance > $HOME/gpxdot/Fichiers_texte/$output
     echo ""
     echo " Fichier copié dans le répertoire $HOME/gpxdot/$output"
 }
