@@ -7,11 +7,13 @@ while true; do
     if [[ -f "$HOME/gpxdot/$fichier_gpx" ]]; then
         break
     else
-        echo "Erreur : fichier introuvable dans $HOME/gpxdot/$fichier. Réessayez."
+        echo "Erreur : fichier introuvable dans $HOME/gpxdot/$fichier_gpx. Réessayez."
     fi
 
 read -p "Distance entre les points (en mètres) : " distance
 
+
+read -p "Voulez-vous rediriger la sortie dans un fichier ? [O/n]" choix_fichier
 case $choix_fichier in
     [0Oo]) gpxdot_fichier
            ;;
@@ -34,5 +36,5 @@ gpxdot_fichier() {
 gpxdot_sansfichier() {
     echo ""
     echo "Conversion du fichier en cours ..."
-    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance
+    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier_gpx $distance
 }
