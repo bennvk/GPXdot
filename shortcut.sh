@@ -28,7 +28,7 @@ gpxdot_fichier() {
 gpxdot_sansfichier() {
     echo ""
     echo "Conversion du fichier en cours ..."
-    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier_gpx $distance
+    python3 $HOME/gpxdot/gpxdot.py $HOME/gpxdot/$fichier_gpx $distance
 }
 
 case $choix_fichier in
