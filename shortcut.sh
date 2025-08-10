@@ -4,7 +4,7 @@ echo ""
 
 while true; do
     read -p "Fichier à convertir : " fichier_gpx
-    if [[ -f "$HOME/gpxdot/$fichier" ]]; then
+    if [[ -f "$HOME/gpxdot/$fichier_gpx" ]]; then
         break
     else
         echo "Erreur : fichier introuvable dans $HOME/gpxdot/$fichier. Réessayez."
