@@ -36,3 +36,5 @@ source [NOM ENVIRONNEMENT VIRTUEL]/bin/activate
 ```
 python3 gpxdot.py [FICHIER.GPX] [DISTANCE ENTRE LES POINTS EN MÈTRE]
 ```
+ou
+```./shortcut.sh``` et suivre les indications du script
