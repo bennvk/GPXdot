@@ -1,5 +1,23 @@
 #!/bin/bash
 
+
+
+gpxdot_fichier() {
+    read -p "Nom du fichier de sortie (ex : Paris-Brest-Paris.txt) : " output
+    echo ""
+    echo " Conversion du fichier en cours ... "
+    mkdir -p ~/gpxdot/Fichiers_texte
+    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance > $HOME/gpxdot/Fichiers_texte/$output
+    echo ""
+    echo " Fichier copié dans le répertoire $HOME/gpxdot/$output"
+}
+
+gpxdot_sansfichier() {
+    echo ""
+    echo "Conversion du fichier en cours ..."
+    python3 $HOME/gpxdot/gpxdot.py $HOME/gpxdot/$fichier_gpx $distance
+}
+
 echo ""
 
 while true; do
@@ -14,22 +32,6 @@ done
 read -p "Distance entre les points (en mètres) : " distance
 
 read -p "Voulez-vous rediriger la sortie dans un fichier ? [O/n]" choix_fichier
-
-gpxdot_fichier() {
-    read -p "Nom du fichier de sortie (ex : Paris-Brest-Paris.txt) : " output
-    echo ""
-    echo " Conversion du fichier en cours ... "
-    mkdir -p ~/gpxdot/Fichiers_texte
-    python3 ~/gpxdot/gpxdot.py ~/gpxdot/$fichier $distance > ~/gpxdot/Fichiers_texte/$output
-    echo ""
-    echo " Fichier copié dans le répertoire $HOME/gpxdot/$output"
-}
-
-gpxdot_sansfichier() {
-    echo ""
-    echo "Conversion du fichier en cours ..."
-    python3 $HOME/gpxdot/gpxdot.py $HOME/gpxdot/$fichier_gpx $distance
-}
 
 case $choix_fichier in
     [0Oo]) gpxdot_fichier
