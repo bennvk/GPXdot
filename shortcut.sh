@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 gpxdot_fichier() {
     read -p "Nom du fichier de sortie (ex : Paris-Brest-Paris.txt) : " output
     echo ""
