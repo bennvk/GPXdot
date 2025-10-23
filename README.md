@@ -6,21 +6,20 @@
 ### Cloner le dépôt
 
 ```python
-git clone https://github.com/<ton-user>/gpxdot-gui.git
-cd gpxdot-gui
+git clone https://github.com/bennvk/gpxdot.git
+cd gpxdot
 ```
 
 ### Créer un environnement virtuel (optionnel mais recommandé)
 
-```python
+```bash
 python3 -m venv venv
-source venv/bin/activate   # Linux/macOS
-venv\\Scripts\\activate    # Windows
+source venv/bin/activate
 ```
 
 ### Installer les dépendances
 
-```python
+```bash
 pip install gpxpy geopy
 ```
 
@@ -28,8 +27,8 @@ pip install gpxpy geopy
 
 Lancer l’application :
 
-```python
-python3 gpxdot_gui_github_dark.py
+```bash
+python3 gpxdot-gui.py
 ```
 
 - Choisissez un fichier .gpx (dossier par défaut : ~/gpxdot/gpxFiles).
@@ -43,5 +42,5 @@ python3 gpxdot_gui_github_dark.py
 ~/gpxdot/
 │── gpxFiles/
 │── txtFiles/
-│── gpxdot_gui_github_dark.py
+│── gpxdot-gui.py
 ```
