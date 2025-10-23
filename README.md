@@ -1,40 +1,38 @@
 # GPXdot, transformer un gpx en liste de coordonnées
 
 
-### Pré-requis et dépendances
+## Installation
 
-- Python3
-- pip
-- gpxpy
-- geopy
+### Cloner le dépôt
 
-
-### Installation
-
-1. Cloner le dépôt
-
-```
-git clone https://github.com/bennvk/gpxdot.git
-cd gpxdot
+```python
+git clone https://github.com/<ton-user>/gpxdot-gui.git
+cd gpxdot-gui
 ```
 
-2. Créer un environnement virtuel
+### Créer un environnement virtuel (optionnel mais recommandé)
 
-```
-python -m venv [NOM ENVIRONNEMENT VIRTUEL]
-```
-
-3. Activer l’environnement
-
-```
-source [NOM ENVIRONNEMENT VIRTUEL]/bin/activate
+```python
+python3 -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\\Scripts\\activate    # Windows
 ```
 
+### Installer les dépendances
 
-### Utilisation
+```python
+pip install gpxpy geopy
+```
 
+## Utilisation
+
+Lancer l’application :
+
+```python
+python3 gpxdot_gui_github_dark.py
 ```
-python3 gpxdot.py [FICHIER.GPX] [DISTANCE ENTRE LES POINTS EN MÈTRE]
-```
-ou
-```./shortcut.sh``` et suivre les indications du script
+
+- Choisissez un fichier .gpx (dossier par défaut : ~/gpxdot/gpxFiles).
+- Indiquez la distance minimale entre les points.
+- Optionnel : cochez Enregistrer la sortie dans un fichier (stockage dans ~/gpxdot/txtFiles).
+- Cliquez sur Lancer et suivez la progression.
