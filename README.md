@@ -36,3 +36,12 @@ python3 gpxdot_gui_github_dark.py
 - Indiquez la distance minimale entre les points.
 - Optionnel : cochez Enregistrer la sortie dans un fichier (stockage dans ~/gpxdot/txtFiles).
 - Cliquez sur Lancer et suivez la progression.
+
+## Arborescence recommandée
+
+```text
+~/gpxdot/
+│── gpxFiles/
+│── txtFiles/
+│── gpxdot_gui_github_dark.py
+```
