@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -13,9 +12,9 @@ import gpxpy
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
-# ----------------------
-# Fonctions de base (reprennent votre script)
-# ----------------------
+#######################################
+##### FONCTIONS DE BASE DU SCRIPT #####
+#######################################
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371000
@@ -30,7 +29,6 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
     return R * c
-
 
 def gpx_to_coordinates(gpx_file, min_distance=0):
     points = []
@@ -58,7 +56,6 @@ def gpx_to_coordinates(gpx_file, min_distance=0):
                             points.append((point.latitude, point.longitude, point.elevation))
                             last_kept_point = point
                             distance_since_last_kept_point = 0.0
-
     return points
 
 
@@ -90,9 +87,9 @@ def reverse_geocode(points, language='fr', user_agent="gpxdot_gui (contact: you@
             progress_cb(i, n)
     return villes
 
-# ----------------------
-# Interface Tkinter (thème sombre - GitHub Dark)
-# ----------------------
+#######################################
+#####   GUI DU SCRIPT - TKINTER   #####
+#######################################
 
 class GPXDotGUI(tk.Tk):
     def __init__(self):
@@ -100,20 +97,16 @@ class GPXDotGUI(tk.Tk):
         self.title("GPX → Villes (gpxdot)")
         self.geometry("900x600")
 
-        # Répertoires par défaut
         home = os.path.expanduser('~')
         self.GPX_DIR = os.path.join(home, 'gpxdot', 'gpxFiles')
         self.TXT_DIR = os.path.join(home, 'gpxdot', 'txtFiles')
 
-        # Thème sombre
         self._apply_dark_theme()
 
-        # File selection row
         frm_file = ttk.Frame(self)
         frm_file.pack(fill='x', padx=12, pady=(12, 6))
 
         self.var_path = tk.StringVar()
-        # Dossier par défaut: ~/gpxdot/gpxFiles
         if os.path.isdir(self.GPX_DIR):
             self.var_path.set(self.GPX_DIR)
 
@@ -122,7 +115,6 @@ class GPXDotGUI(tk.Tk):
         self.ent_file.pack(side='left', padx=6, expand=True, fill='x')
         ttk.Button(frm_file, text="Parcourir…", command=self.browse_file).pack(side='left')
 
-        # Options row
         frm_opts = ttk.Frame(self)
         frm_opts.pack(fill='x', padx=12, pady=6)
 
@@ -130,7 +122,6 @@ class GPXDotGUI(tk.Tk):
         ttk.Label(frm_opts, text="Distance entre les points (en mètres) :").pack(side='left')
         ttk.Entry(frm_opts, textvariable=self.var_distance, width=8).pack(side='left', padx=(6, 18))
 
-        # Save options
         frm_save = ttk.Frame(self)
         frm_save.pack(fill='x', padx=12, pady=6)
 
@@ -144,7 +135,6 @@ class GPXDotGUI(tk.Tk):
         self.btn_out = ttk.Button(frm_save, text="Parcourir…", command=self.browse_save, state='disabled')
         self.btn_out.pack(side='left')
 
-        # Action buttons
         frm_actions = ttk.Frame(self)
         frm_actions.pack(fill='x', padx=12, pady=6)
 
@@ -155,7 +145,6 @@ class GPXDotGUI(tk.Tk):
         self.btn_export = ttk.Button(frm_actions, text="Exporter la sortie…", command=self.export_output)
         self.btn_export.pack(side='right')
 
-        # Progress
         frm_prog = ttk.Frame(self)
         frm_prog.pack(fill='x', padx=12, pady=(0, 6))
         self.prog = ttk.Progressbar(frm_prog, mode='determinate', style='Modern.Horizontal.TProgressbar')
@@ -163,30 +152,28 @@ class GPXDotGUI(tk.Tk):
         self.var_prog = tk.StringVar(value="Prêt")
         ttk.Label(frm_prog, textvariable=self.var_prog, width=24, anchor='e', style='Muted.TLabel').pack(side='left', padx=(6,0))
 
-        # Output text (appliquer la palette GitHub Dark)
         self.txt = tk.Text(
             self, wrap='none', height=20,
-            bg='#161B22',            # surface
-            fg='#C9D1D9',            # text
-            insertbackground='#C9D1D9',  # curseur
+            bg='#161B22',
+            fg='#C9D1D9',
+            insertbackground='#C9D1D9',
             highlightthickness=0, bd=0
         )
         self.txt.pack(fill='both', expand=True, padx=12, pady=(0,12))
         self.txt.configure(font=("Consolas", 10))
 
-        # Async machinery
         self.cancel_event = threading.Event()
         self.worker = None
         self.msg_queue = queue.Queue()
         self.after(100, self._poll_queue)
 
     def _apply_dark_theme(self):
-        bg = '#0D1117'       # fond principal
-        surface = '#161B22'  # champs/surfaces
-        border = '#30363D'   # bordures
-        text = '#C9D1D9'     # texte principal
-        muted = '#8B949E'    # texte secondaire
-        accent = '#58A6FF'   # accent
+        bg = '#0D1117'
+        surface = '#161B22'
+        border = '#30363D'
+        text = '#C9D1D9'
+        muted = '#8B949E'
+        accent = '#58A6FF'
 
         self.configure(bg=bg)
         style = ttk.Style(self)
@@ -195,7 +182,6 @@ class GPXDotGUI(tk.Tk):
         except Exception:
             pass
 
-        # Frames & labels
         style.configure('TFrame', background=bg)
         style.configure('TLabel', background=bg, foreground=text)
         style.configure('Muted.TLabel', background=bg, foreground=muted)
@@ -204,9 +190,6 @@ class GPXDotGUI(tk.Tk):
                   background=[('active', bg), ('selected', bg)],
                   foreground=[('active', text), ('selected', text)])
 
-
-
-        # Entrées
         style.configure(
             'TEntry',
             fieldbackground=surface,
@@ -216,17 +199,13 @@ class GPXDotGUI(tk.Tk):
         )
         style.map('TEntry', fieldbackground=[('focus', surface)], bordercolor=[('focus', accent)])
 
-        # Boutons
         style.configure('TButton', background=surface, foreground=text, relief='flat', padding=8)
         style.map('TButton', background=[('active', '#1C2128')])  # hover proche GitHub
 
-        # Progressbar
         style.configure('Modern.Horizontal.TProgressbar', troughcolor=surface, background=accent, thickness=10)
-
-        # Couleur globale par défaut
+        
         style.configure('.', background=bg, foreground=text)
 
-    # ------------- UI handlers -------------
     def browse_file(self):
         initdir = self.GPX_DIR if os.path.isdir(self.GPX_DIR) else os.path.expanduser('~')
         path = filedialog.askopenfilename(
@@ -290,7 +269,6 @@ class GPXDotGUI(tk.Tk):
             messagebox.showerror("Erreur", "Veuillez sélectionner un fichier GPX.")
             return
         if not os.path.isfile(path):
-            # si l'utilisateur a juste tapé un nom, tenter ~/gpxdot/gpxFiles/nom
             alt = os.path.join(self.GPX_DIR, path)
             if os.path.isfile(alt):
                 path = alt
@@ -319,7 +297,6 @@ class GPXDotGUI(tk.Tk):
                     messagebox.showerror("Erreur", f"Impossible de créer le dossier :\n{out_dir}\n{e}")
                     return
 
-        # Prépare l'UI
         self.txt.delete('1.0', 'end')
         self.prog.configure(value=0, maximum=100)
         self.var_prog.set("Lecture du GPX…")
@@ -327,7 +304,6 @@ class GPXDotGUI(tk.Tk):
         self.btn_cancel.configure(state='normal')
         self.cancel_event.clear()
 
-        # Lancer le traitement dans un thread
         args = {
             'path': path,
             'dist': dist,
