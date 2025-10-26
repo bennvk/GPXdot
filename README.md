@@ -20,7 +20,7 @@ source venv/bin/activate
 ### Installer les dépendances
 
 ```bash
-pip install gpxpy geopy
+pip install -r requirements.txt
 ```
 
 ## Utilisation
