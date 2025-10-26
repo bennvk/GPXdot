@@ -200,7 +200,7 @@ class GPXDotGUI(tk.Tk):
         style.map('TEntry', fieldbackground=[('focus', surface)], bordercolor=[('focus', accent)])
 
         style.configure('TButton', background=surface, foreground=text, relief='flat', padding=8)
-        style.map('TButton', background=[('active', '#1C2128')])  # hover proche GitHub
+        style.map('TButton', background=[('active', '#1C2128')])
 
         style.configure('Modern.Horizontal.TProgressbar', troughcolor=surface, background=accent, thickness=10)
         
@@ -215,7 +215,6 @@ class GPXDotGUI(tk.Tk):
         )
         if path:
             self.var_path.set(path)
-            # proposer un nom de sortie par défaut dans ~/gpxdot/txtFiles
             base = os.path.splitext(os.path.basename(path))[0]
             txt_dir = self.TXT_DIR if os.path.isdir(self.TXT_DIR) else os.path.dirname(path)
             out_default = os.path.join(txt_dir, f"{base}.txt")
