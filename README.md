@@ -6,8 +6,8 @@
 ### Cloner le dépôt
 
 ```python
-git clone https://github.com/bennvk/gpxdot.git
-cd gpxdot
+git clone https://github.com/bennvk/GPXdot.git
+cd GPXdot
 ```
 
 ### Créer un environnement virtuel (optionnel mais recommandé)
